@@ -14,7 +14,7 @@ Each step writes a sentinel file (`.done`) so downstream steps can wait reliably
 ## How to run the pipeline
 ### 1. Clone file
 ```bash
-cd baonguyen-aumovio-homework
+git clone https://github.com/giabaow/technical-test.git
 ```
 
 ### 2. Build images
