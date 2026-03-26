@@ -1,0 +1,14 @@
+artifact_uri: file:///Users/bao/Documents/aumovio-homework/mlruns/984792143209416991/c1dbc4a7782f44f185e4eada5d9b16e9/artifacts
+end_time: 1774478278936
+entry_point_name: ''
+experiment_id: '984792143209416991'
+lifecycle_stage: active
+run_id: c1dbc4a7782f44f185e4eada5d9b16e9
+run_name: linear_svc
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1774478278924
+status: 3
+tags: []
+user_id: bao

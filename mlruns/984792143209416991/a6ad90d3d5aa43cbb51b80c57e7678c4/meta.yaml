@@ -1,0 +1,14 @@
+artifact_uri: file:///Users/bao/Documents/aumovio-homework/mlruns/984792143209416991/a6ad90d3d5aa43cbb51b80c57e7678c4/artifacts
+end_time: 1774478289249
+entry_point_name: ''
+experiment_id: '984792143209416991'
+lifecycle_stage: active
+run_id: a6ad90d3d5aa43cbb51b80c57e7678c4
+run_name: sgd
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1774478289240
+status: 3
+tags: []
+user_id: bao

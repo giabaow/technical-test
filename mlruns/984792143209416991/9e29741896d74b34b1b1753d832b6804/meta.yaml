@@ -1,0 +1,14 @@
+artifact_uri: file:///Users/bao/Documents/aumovio-homework/mlruns/984792143209416991/9e29741896d74b34b1b1753d832b6804/artifacts
+end_time: 1774478259765
+entry_point_name: ''
+experiment_id: '984792143209416991'
+lifecycle_stage: active
+run_id: 9e29741896d74b34b1b1753d832b6804
+run_name: logistic_regression
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1774478259756
+status: 3
+tags: []
+user_id: bao

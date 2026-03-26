@@ -1,0 +1,111 @@
+version: "3.9"
+
+volumes:
+  pipeline_data:
+
+services:
+
+#preparation
+  data-prep:
+    build:
+      context: ./data_prep
+    volumes:
+      - pipeline_data:/data
+      - ./data:/app/data/:ro
+    environment:
+      PROCESSED_DATA_DIR: /data/processed
+      TEST_SIZE:           "0.2"
+      SEED:                "42"
+
+    command: >
+      sh -c "python preparation.py && touch /data/processed/.done"
+
+#train
+  train:
+    build:
+      context: ./train
+    volumes:
+      - pipeline_data:/data
+    environment:
+      TRAIN_PATH: /data/processed/train.csv
+      MODEL_DIR: /data/model
+      TFIDF_CHAR_MAX_FEATURES: "150000"
+      TFIDF_MAX_FEATURES: "50000"
+      TFIDF_NGRAM_CHAR_MAX: "4"
+      TFIDF_NGRAM_MAX: "2"
+      LR_C: "5.0"
+      SVC_C: "1.0"
+      LR_MAX_ITER: "1000"
+      CV_FOLDS: "5"
+      SEED: "42"
+      MLFLOW_TRACKING_URI: "http://mlflow:5000"
+      MLFLOW_EXPERIMENT: "aumovio-homework"
+    command: >
+      sh -c "
+          echo 'Waiting for data_prep';
+          until [ -f /data/processed/.done ]; do sleep 2; done;
+          python train.py && touch /data/model/.done"
+    depends_on:
+      - data-prep
+
+#evaluate
+  evaluate:
+    build:
+      context: ./evaluate
+    volumes:
+      - pipeline_data:/data
+    environment:
+      TEST_PATH: /data/processed/test.csv
+      MODEL_PATH: /data/model/model.joblib
+      RESULTS_DIR: /data/results
+      MLFLOW_TRACKING_URI: "http://mlflow:5000"
+      MLFLOW_EXPERIMENT: "aumovio-homework"
+    command: >
+      sh -c "
+        echo 'Waiting for training';
+        until [ -f /data/model/.done ]; do sleep 2; done;
+        python evaluate.py"
+    depends_on:
+      - train
+
+  # deploy
+  deploy:
+    build:
+      context: ./deploy
+    volumes:
+      - pipeline_data:/data
+    environment:
+      MODEL_PATH: /data/model/model.joblib
+      META_PATH: /data/model/meta.json
+      HOST: "0.0.0.0"
+      PORT: "8080"
+    ports:
+      - "8080:8080"
+    command: >
+      sh -c "
+        echo 'Waiting for model';
+        until [ -f /data/model/.done ]; do sleep 2; done;
+        python app.py"
+    depends_on:
+      - train
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 15s
+      timeout:  5s
+      retries:  5
+      start_period: 20s
+    restart: on-failure
+
+
+  mlflow:
+    image: ghcr.io/mlflow/mlflow:v2.13.0
+    ports:
+      - "5002:5000"
+    volumes:
+      - pipeline_data:/mlflow
+    command: >
+      mlflow server
+      --host 0.0.0.0
+      --port 5000
+      --backend-store-uri /mlflow/mlruns
+      --default-artifact-root /mlflow/artifacts

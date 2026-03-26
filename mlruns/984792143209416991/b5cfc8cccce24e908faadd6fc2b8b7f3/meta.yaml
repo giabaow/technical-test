@@ -1,0 +1,14 @@
+artifact_uri: file:///Users/bao/Documents/aumovio-homework/mlruns/984792143209416991/b5cfc8cccce24e908faadd6fc2b8b7f3/artifacts
+end_time: 1774474051640
+entry_point_name: ''
+experiment_id: '984792143209416991'
+lifecycle_stage: active
+run_id: b5cfc8cccce24e908faadd6fc2b8b7f3
+run_name: rebellious-newt-387
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1774473994261
+status: 3
+tags: []
+user_id: bao

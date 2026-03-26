@@ -1,0 +1,48 @@
+{
+  "best_model": "linear_svc",
+  "cv_accuracy": 0.5844719035387215,
+  "train_accuracy": 0.675968890922162,
+  "labels": [
+    "Arabic",
+    "Chinese",
+    "Dutch",
+    "English",
+    "Estonian",
+    "French",
+    "Hindi",
+    "Indonesian",
+    "Japanese",
+    "Korean",
+    "Latin",
+    "Persian",
+    "Portugese",
+    "Pushto",
+    "Romanian",
+    "Russian",
+    "Spanish",
+    "Swedish",
+    "Tamil",
+    "Thai",
+    "Turkish",
+    "Urdu"
+  ],
+  "num_classes": 22,
+  "cv_results": {
+    "logistic_regression": {
+      "mean": 0.5837529279380271,
+      "std": 0.002537840077077479
+    },
+    "linear_svc": {
+      "mean": 0.5844719035387215,
+      "std": 0.00241583352395954
+    },
+    "sgd": {
+      "mean": 0.5737535471555496,
+      "std": 0.006915615526403229
+    },
+    "ensemble": {
+      "mean": 0.5800277153222173,
+      "std": 0.00667833195980257
+    }
+  }
+}

@@ -1,0 +1,14 @@
+artifact_uri: file:///Users/bao/Documents/aumovio-homework/mlruns/984792143209416991/91404201d7104eceafd0893e2341a139/artifacts
+end_time: 1774478504136
+entry_point_name: ''
+experiment_id: '984792143209416991'
+lifecycle_stage: active
+run_id: 91404201d7104eceafd0893e2341a139
+run_name: ensemble
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1774478504127
+status: 3
+tags: []
+user_id: bao

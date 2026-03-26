@@ -1,0 +1,14 @@
+artifact_uri: file:///Users/bao/Documents/aumovio-homework/mlruns/984792143209416991/f41212bfc25541d18d0b656cf646547f/artifacts
+end_time: 1774473867491
+entry_point_name: ''
+experiment_id: '984792143209416991'
+lifecycle_stage: active
+run_id: f41212bfc25541d18d0b656cf646547f
+run_name: mercurial-snail-443
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1774473811786
+status: 3
+tags: []
+user_id: bao
