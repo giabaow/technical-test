@@ -15,6 +15,7 @@ Each step writes a sentinel file (`.done`) so downstream steps can wait reliably
 ### 1. Clone file
 ```bash
 git clone https://github.com/giabaow/technical-test.git
+cd technical-test
 ```
 
 ### 2. Build images
